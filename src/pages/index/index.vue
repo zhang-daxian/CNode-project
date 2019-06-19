@@ -10,28 +10,28 @@
         </el-tabs>
         <div>
             <ul class="list">
-                <li v-for = "item in limit">
+                <li v-for = "item in topicList">
                     <div class="count">
                         <!-- 头像 -->
                         <el-image
                         style="width: 50px"
-                        :src="url1"
+                        :src="item.author.avatar_url"
                         class="left"></el-image>
                         <!-- 点击数 -->
-                        <div class="left">
-                            <span>123</span>/<span>12321</span>
+                        <div class="left" style="width : 100px;text-align:center;">
+                            <span>{{item.reply_count}}</span>/<span>{{item.visit_count}}</span>
                         </div>
                         <!-- 图标 -->
                         <div class="left">
-                            <el-tag type="success" size="mini">置顶</el-tag>
+                            <el-tag type="success" size="mini">{{item.top}}</el-tag>
                         </div>
                         <!-- 标题 -->
                         <div class="left">
-                            <el-link>标题</el-link>
+                            <el-link>{{item.title}}</el-link>
                         </div>
                         <!-- 时间 -->
                         <div class="right">
-                            <el-link :underline="false">2天前</el-link>
+                            <el-link :underline="false">{{item.last_reply_at}}</el-link>
                         </div>
                     </div>
                      <el-divider></el-divider>
@@ -43,7 +43,6 @@
                 :total="1000">
             </el-pagination>
         </div>
-        {{JSON.stringify(topicList)}}
     </div>
 </template>
 
@@ -57,7 +56,6 @@
                 page: 1,
                 topicList: [],
                 fits: ["scale-down"],
-                url1: 'https://avatars2.githubusercontent.com/u/227713?v=4&s=120'
             }
         },
         created () {
