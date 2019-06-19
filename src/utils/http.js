@@ -6,7 +6,7 @@ export function get(param) {
     for (const k in query) {
         arr.push(`${k}=${query[k]}`)
     }
-    arr.push(`gettime=${new Date().getTime()}`)
+    arr.push(`gettime=${new Date().getTime()}`) //添加时间戳
     url = url + '?' + arr.join('&')
     return new Promise((resolve, reject) => {
         Vue.axios.get(url).then((response) => {

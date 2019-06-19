@@ -26,7 +26,7 @@
                             <el-tag type="success" size="mini">{{item.top}}</el-tag>
                         </div>
                         <!-- 标题 -->
-                        <div class="left">
+                        <div class="left title">
                             <el-link>{{item.title}}</el-link>
                         </div>
                         <!-- 时间 -->
@@ -55,7 +55,6 @@
                 limit: 20,
                 page: 1,
                 topicList: [],
-                fits: ["scale-down"],
             }
         },
         created () {
@@ -104,6 +103,11 @@
     .right {
         margin :auto;
         margin-right: 10px;
+    }
+    .title {
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
     .el-divider {
         margin :0;
