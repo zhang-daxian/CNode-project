@@ -1,5 +1,10 @@
 import Vue from 'vue'
 
+const config = {
+    baseURL: 'https://cnodejs.org/api/v1'
+}
+
+
 export function get(param) {
     let { url, query } = param
     let arr = []
@@ -9,7 +14,18 @@ export function get(param) {
     arr.push(`gettime=${new Date().getTime()}`) //添加时间戳
     url = url + '?' + arr.join('&')
     return new Promise((resolve, reject) => {
-        Vue.axios.get(url).then((response) => {
+        Vue.axios.get(url, config).then((response) => {
+            resolve(response.data)
+        }, err => {
+            reject(err)
+        })
+    })
+}
+
+export function post (param) {
+    const { url, query } = param
+    return new Promise((resolve, reject) => {
+        Vue.axios.post(url, query || {}, config).then((response) => {
             resolve(response.data)
         }, err => {
             reject(err)
