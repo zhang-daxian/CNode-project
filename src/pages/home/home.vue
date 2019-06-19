@@ -22,7 +22,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.navigation>li>a {
-		text-decoration:none;
-	}
+	
 </style>

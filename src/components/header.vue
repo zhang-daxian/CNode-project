@@ -34,7 +34,7 @@ export default {
   name: 'header',
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: "index"
     }
   },
   methods: {
