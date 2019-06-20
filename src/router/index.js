@@ -6,6 +6,7 @@ import index from '@/pages/index/index'
 import api from '@/pages/api/api'
 import about from '@/pages/about/about'
 import landing from '@/pages/landing/landing'
+import details from '@/pages/details/details'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/landing',
       name: 'landing',
       component: landing
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: details
     },
     {
       path:"/",

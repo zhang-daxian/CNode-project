@@ -33,11 +33,11 @@
                             <!-- <el-tag type="success" size="mini">{{item.top}}</el-tag> -->
                         </div>
                         <!-- 标题 -->
-                        <div class="left title">
+                        <div class="left title" @click="jumpDetails(item.id)">
                             <el-link>{{item.title}}</el-link>
                         </div>
                         <!-- 时间 -->
-                        <div class="right">
+                        <div class="right" @click="jumpDetails(item.id)">
                             <el-link :underline="false">{{item.last_reply_at | fromNow}}</el-link>
                         </div>
                     </div>
@@ -111,6 +111,9 @@
             },
             handlePageChange(page) {
                 this.getList(page)
+            },
+            jumpDetails(eventId) {
+                this.$router.push(`/details?eventId=${eventId}`)
             }
         },
     }
