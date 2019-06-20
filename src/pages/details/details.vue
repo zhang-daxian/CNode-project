@@ -36,7 +36,27 @@
         <div class="middle">
             <span>{{details.reply_count}}回复</span>
         </div>
-        
+        <div>
+            <ul class="list">
+                <li v-for="(item, index) in details.replies" :key="index">
+                    <div class="list-top">
+                        <!-- 头像 -->
+                        <el-image
+                        style="width: 35px; margin-top: 10px"
+                        :src="item.author.avatar_url"
+                        class="left"></el-image>
+                        <span>{{item.author.loginname}} &nbsp;</span>
+                        <span>{{index+1}}楼·{{item.create_at | fromNow}}</span>
+                        <div class="list-top-right">
+                            <i class="el-icon-thumb"></i>
+                            <span>{{item.ups.length}}</span>
+                        </div>
+                    </div>
+                    <div v-html="item.content" />
+                    <el-divider />
+                </li>
+            </ul>
+        </div>
     </div>
       
 </template>
@@ -75,6 +95,12 @@
 </script>
 
 <style>
+    .list > li {
+        list-style: none;
+        margin-left: -30px;
+        display: flex;
+        flex-direction: column;
+    }
     .top {
         height: 88px;
     }
@@ -94,6 +120,26 @@
         margin-right: 5px;
     }
     .middle {
-        margin: 10px 0px;
+        margin: 10px 0px 0px 10px;
+    }
+    .list-top {
+        display: flex;
+        flex-direction: row
+    }
+    .list-top span {
+        display: inline-block;
+        margin: auto 0px;
+    }
+    .list-top-right {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .list-top-right>.el-icon-thumb {
+        margin: auto 0px;
+    }
+    .el-divider {
+        margin: 0px 0px;
     }
 </style>
